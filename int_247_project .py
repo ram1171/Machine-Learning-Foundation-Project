@@ -89,19 +89,40 @@ lreg.fit(xtrain,ytrain)
 prediction = lreg.predict(xtest)
 
 from sklearn.metrics import accuracy_score
-accuracy_score(ytest, prediction)
+print('Logistic Regression')
+print(accuracy_score(ytest, prediction))
 
 from sklearn.tree import DecisionTreeClassifier
 clf = DecisionTreeClassifier(max_depth=4, random_state=0)
 clf.fit(xtrain,ytrain)
 predict = clf.predict(xtest)
-accuracy_score(ytest, predict)
+print('Decision Tree')
+print(accuracy_score(ytest, predict))
 
 from sklearn.ensemble import RandomForestClassifier
-forest=RandomForestClassifier(criterion='gini',n_estimators=100,random_state=1,n_jobs=2)
+forest=RandomForestClassifier(criterion='gini',n_estimators=50,random_state=1,n_jobs=2)
 forest.fit(xtrain,ytrain)
 pred=forest.predict(xtest)
-accuracy_score(ytest,pred)
+print('Random Forest')
+print(accuracy_score(ytest,pred))
+
+print('Hyper Parameter Tuning')
+f1=RandomForestClassifier(criterion='gini',n_estimators=70,random_state=1,n_jobs=2)
+f1.fit(xtrain,ytrain)
+pred1=f1.predict(xtest)
+print('Random Forest after Hyper Parameter Tuning 1')
+print(accuracy_score(ytest,pred1))
+f2=RandomForestClassifier(criterion='gini',n_estimators=90,random_state=1,n_jobs=2)
+f2.fit(xtrain,ytrain)
+pred2=f2.predict(xtest)
+print('Random Forest after Hyper Parameter Tuning 2')
+print(accuracy_score(ytest,pred2))
+f3=RandomForestClassifier(criterion='gini',n_estimators=100,random_state=1,n_jobs=2)
+f3.fit(xtrain,ytrain)
+pred3=f3.predict(xtest)
+print('Random Forest after Hyper Parameter Tuning 3')
+print(accuracy_score(ytest,pred3))
+
 
 #from google.colab import files
 #uploaded1 = files.upload()
